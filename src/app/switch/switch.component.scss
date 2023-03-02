@@ -15,13 +15,13 @@
 
 .left_arrow{
 	position: absolute;
-	top : 45px;
+	top : 50px;
 	left: 300px;
 }
 
 .right_arrow{
 	position: absolute;
-	top : 45px;	
+	top : 50px;	
 	right: 300px;
 }
 
@@ -51,4 +51,31 @@
 	padding: 16px 16px 16px 60px;
 	top:50px;
 }
+
+button {
+	z-index: 5;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	font-family: inherit;
+	font-weight: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	cursor: pointer;
+}
+
+.right_arrow_image, .left_arrow_image{
+	width: 50px;
+}
+
+.left_arrow--disabled, .right_arrow--disabled{
+	opacity: 0.2;
+}
+
 

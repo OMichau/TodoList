@@ -1,19 +1,28 @@
 <div>
-    <button class="left_arrow" [disabled]="first_element" (click)="changeList(-1)">
-        <p><=</p>
-      </button>
-      <h1 
-        *ngIf="!edit"
-        (dblclick)="editTitle()"
-        class="tittle">{{block_todo.title}}</h1>
-      <input
-        class="editing"
-        *ngIf="edit"
-        (keyup.enter)="endEdit($event)"
-        value="{{ block_todo.title }}"
-        autofocus
-      />
-      <button class="right_arrow" [disabled]="last_element" (click)="changeList(+1)">
-        <p>=></p>
-      </button>
+  <button
+    class="left_arrow"
+    [disabled]="first_element"
+    (click)="changeList(-1)"
+    [ngClass]="{ 'left_arrow--disabled': first_element }"
+  >
+    <img class="left_arrow_image" src="../../assets/left-arrow.png" />
+  </button>
+  <h1 *ngIf="!edit" (dblclick)="editTitle()" class="tittle">
+    {{ block_todo.title }}
+  </h1>
+  <input
+    class="editing"
+    *ngIf="edit"
+    (keyup.enter)="endEdit($event)"
+    value="{{ block_todo.title }}"
+    autofocus
+  />
+  <button
+    class="right_arrow"
+    [disabled]="last_element"
+    (click)="changeList(+1)"
+    [ngClass]="{ 'right_arrow--disabled': last_element }"
+  >
+    <img class="right_arrow_image" src="../../assets/right-arrow.png" />
+  </button>
 </div>
