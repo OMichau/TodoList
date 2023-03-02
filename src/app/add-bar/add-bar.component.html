@@ -1,0 +1,17 @@
+<div class="main">
+  <button
+    class="check_all"
+    [ngClass]="{
+      'check_all--active': nbItems === completedItems,
+      'check_all--none': nbItems === 0
+    }"
+    (click)="checkAll()"
+  >
+    <img class="arrow_down" src="../../assets/arrow down.png" />
+  </button>
+  <input
+    placeholder="What needs to be done?"
+    class="text_bar"
+    (keyup.enter)="onKeyEnter($event)"
+  />
+</div>

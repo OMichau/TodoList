@@ -1,0 +1,31 @@
+<div class="todo_unit">
+  <mat-checkbox
+    [checked]="todo.active"
+    (change)="changeActive()"
+  ></mat-checkbox>
+  <p
+    class="todo_value"
+    *ngIf="!edit"
+    (dblclick)="editTodo()"
+    [ngClass]="{
+      'todo_value--check': todo.active
+    }"
+  >
+    {{ todo.value }}
+  </p>
+  <input
+    class="editing"
+    *ngIf="edit"
+    (keyup.enter)="endEdit($event)"
+    value="{{ todo.value }}"
+    autofocus
+  />
+  <button
+    class="clear_cross"
+    mat-fab
+    ng-module="{color: 'blue'}"
+    (click)="clear()"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

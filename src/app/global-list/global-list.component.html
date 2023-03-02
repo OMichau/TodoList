@@ -1,0 +1,28 @@
+<div class="list">
+  <app-add-bar
+    class="add_bar"
+    [nbItems]="block_todo.todos_list.length"
+    [completedItems]="number_completed_items"
+    (addToListEmitter)="addToList($event)"
+    (activeAllEmitter)="checkAll()"
+  ></app-add-bar>
+  <div class="list_todo">
+    <div *ngFor="let todo of block_todo.todos_list">
+      <div *ngIf="printableItem(todo)">
+        <app-todo
+          [todo]="todo"
+          (clearEmitter)="clear($event)"
+          (activeEmitter)="activeTodo($event)"
+          (changeNameEmitter)="changeNameTodo($event)"
+        ></app-todo>
+      </div>
+    </div>
+  </div>
+
+  <app-choice-print
+    [completed_items]="number_completed_items"
+    [number_items]="block_todo.todos_list.length"
+    (changePrintEmitter)="changePrint($event)"
+    (clearCompletedEmitter)="clearCompletedItems()"
+  ></app-choice-print>
+</div>

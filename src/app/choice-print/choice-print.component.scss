@@ -1,0 +1,54 @@
+mat-button-toggle-group{
+    position: absolute;
+    left :135px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 32px;
+    align-items: center;
+}
+
+
+.down_bar{
+    display: flex;
+    align-items: center;
+}
+
+.clear_all{
+    position: absolute;
+    left: 380px;
+}
+
+
+button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	font-family: inherit;
+	font-weight: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+button:hover{
+    text-decoration: underline;
+}
+
+.info {
+	margin: 27px 10px 0;
+	color: #bfbfbf;
+	font-size: 15px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	text-align: center;
+}
+
+.info p {
+	line-height: 1;
+}
