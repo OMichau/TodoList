@@ -1,0 +1,25 @@
+<div class="list">
+  <app-add-bar
+    class="add_bar"
+    [nbItems]="block_todo.todos_list.length"
+    [completedItems]="number_completed_items"
+    (addToList)="addToList($event)"
+    (activeAll)="checkAll()"
+  ></app-add-bar>
+  <div class="list_todo">
+    <app-todo
+      *ngFor="let todo of filtered_list"
+      [todo]="todo"
+      (clearTodo)="clear($event)"
+      (activeTodo)="activeTodo($event)"
+      (changeName)="changeNameTodo($event)"
+    ></app-todo>
+  </div>
+
+  <app-todo-list-filter
+    [completed_items]="number_completed_items"
+    [number_items]="block_todo.todos_list.length"
+    (changeFilterMod)="changePrint($event)"
+    (clearCompleted)="clearCompletedItems()"
+  ></app-todo-list-filter>
+</div>

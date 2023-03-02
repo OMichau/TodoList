@@ -13,17 +13,19 @@
     aria-label="Font Style"
     value="All"
   >
-    <mat-button-toggle value="All" (click)="changePrint(0)"
+    <mat-button-toggle value="All" (click)="changePrint(filter_mod.All)"
       >All</mat-button-toggle
     >
-    <mat-button-toggle value="Active" (click)="changePrint(1)"
+    <mat-button-toggle value="Active" (click)="changePrint(filter_mod.Active)"
       >Active</mat-button-toggle
     >
-    <mat-button-toggle value="Completed" (click)="changePrint(2)"
+    <mat-button-toggle
+      value="Completed"
+      (click)="changePrint(filter_mod.Completed)"
       >Completed</mat-button-toggle
     >
   </mat-button-toggle-group>
   <div class="clear_all" *ngIf="completed_items !== 0">
-    <button (click)="clearCompleted()">Clear Completed</button>
+    <button (click)="clearCompletedItems()">Clear Completed</button>
   </div>
 </div>

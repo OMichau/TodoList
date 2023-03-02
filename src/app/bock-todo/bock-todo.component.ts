@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BlockTodo } from '../class/block-todo';
 import { Todo } from '../class/todo';
+import { UpdateBlockTodo } from '../class/update-block-todo';
 
 @Component({
   selector: 'app-bock-todo',
@@ -29,16 +30,16 @@ export class BockTodoComponent {
     }
   }
 
-  updateList(event: [number, Todo[]]) {
-    this.actual_list.todos_list = event[1];
+  updateList(event: UpdateBlockTodo) {
+    this.actual_list.todos_list = event.new_todo_list;
     if (this.new_list) {
       this.block_todo_list.push(this.actual_list);
       this.new_list = false;
     } else {
       const index = this.block_todo_list.findIndex(
-        (todos_list) => todos_list.id === event[0]
+        (todos_list) => todos_list.id === event.todo_list_id
       );
-      this.block_todo_list[index].todos_list = event[1];
+      this.block_todo_list[index].todos_list = event.new_todo_list;
     }
     this.countCompletedItems();
   }

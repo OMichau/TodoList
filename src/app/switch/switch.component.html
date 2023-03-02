@@ -2,7 +2,7 @@
   <button
     class="left_arrow"
     [disabled]="first_element"
-    (click)="changeList(-1)"
+    (click)="switchList(-1)"
     [ngClass]="{ 'left_arrow--disabled': first_element }"
   >
     <img class="left_arrow_image" src="../../assets/left-arrow.png" />
@@ -20,7 +20,7 @@
   <button
     class="right_arrow"
     [disabled]="last_element"
-    (click)="changeList(+1)"
+    (click)="switchList(+1)"
     [ngClass]="{ 'right_arrow--disabled': last_element }"
   >
     <img class="right_arrow_image" src="../../assets/right-arrow.png" />

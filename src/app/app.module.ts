@@ -9,9 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddBarComponent } from './add-bar/add-bar.component';
-import { GlobalListComponent } from './global-list/global-list.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoComponent } from './todo/todo.component';
-import { ChoicePrintComponent } from './choice-print/choice-print.component';
+import { TodoListFilterComponent } from './todo-list-filter/todo-list-filter.component';
 import { SwitchComponent } from './switch/switch.component';
 import { BockTodoComponent } from './bock-todo/bock-todo.component';
 
@@ -19,9 +19,9 @@ import { BockTodoComponent } from './bock-todo/bock-todo.component';
   declarations: [
     AppComponent,
     AddBarComponent,
-    GlobalListComponent,
+    TodoListComponent,
     TodoComponent,
-    ChoicePrintComponent,
+    TodoListFilterComponent,
     SwitchComponent,
     BockTodoComponent,
   ],

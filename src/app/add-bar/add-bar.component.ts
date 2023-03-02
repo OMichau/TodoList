@@ -12,18 +12,18 @@ export class AddBarComponent {
   @Input() nbItems = 0;
   @Input() completedItems = 0;
 
-  @Output() addToListEmitter = new EventEmitter<Todo>();
-  @Output() activeAllEmitter = new EventEmitter<void>();
+  @Output() addToList = new EventEmitter<Todo>();
+  @Output() activeAll = new EventEmitter<void>();
 
   onKeyEnter(event: any) {
     if (event.target.value != '') {
-      this.addToListEmitter.emit(new Todo(this.nextId, event.target.value));
+      this.addToList.emit(new Todo(this.nextId, event.target.value));
       this.nextId++;
       event.target.value = '';
     }
   }
 
   checkAll() {
-    this.activeAllEmitter.emit();
+    this.activeAll.emit();
   }
 }

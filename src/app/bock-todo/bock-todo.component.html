@@ -1,17 +1,17 @@
 <div>
   <app-switch
     [block_todo]="actual_list"
-    (changeNameEmitter)="editTitle($event)"
-    (changeListEmitter)="changeList($event)"
+    (changeName)="editTitle($event)"
+    (changeList)="changeList($event)"
     [first_element]="current_index === 0"
     [last_element]="current_index === block_todo_list.length"
   >
   </app-switch>
   <div class="global">
-    <app-global-list
+    <app-todo-list
       [number_completed_items]="actual_completed_item"
       [block_todo]="actual_list"
-      (changementEmitter)="updateList($event)"
-    ></app-global-list>
+      (updateTodoBlock)="updateList($event)"
+    ></app-todo-list>
   </div>
 </div>

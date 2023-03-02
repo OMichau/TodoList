@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChoicePrintComponent } from './choice-print.component';
+import { TodoListComponent } from './todo-list.component';
 
-describe('ChoicePrintComponent', () => {
-  let component: ChoicePrintComponent;
-  let fixture: ComponentFixture<ChoicePrintComponent>;
+describe('TodoListComponent', () => {
+  let component: TodoListComponent;
+  let fixture: ComponentFixture<TodoListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ChoicePrintComponent],
+      declarations: [TodoListComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ChoicePrintComponent);
+    fixture = TestBed.createComponent(TodoListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

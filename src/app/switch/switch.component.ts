@@ -11,8 +11,8 @@ export class SwitchComponent {
   @Input() first_element = true;
   @Input() last_element = true;
 
-  @Output() changeNameEmitter = new EventEmitter<[number, string]>();
-  @Output() changeListEmitter = new EventEmitter<number>();
+  @Output() changeName = new EventEmitter<[number, string]>();
+  @Output() changeList = new EventEmitter<number>();
 
   edit = false;
 
@@ -21,11 +21,11 @@ export class SwitchComponent {
   }
 
   endEdit(event: any) {
-    this.changeNameEmitter.emit([this.block_todo.id, event.target.value]);
+    this.changeName.emit([this.block_todo.id, event.target.value]);
     this.edit = false;
   }
 
-  changeList(index: number) {
-    this.changeListEmitter.emit(index);
+  switchList(index: number) {
+    this.changeList.emit(index);
   }
 }
