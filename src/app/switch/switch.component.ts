@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { BlockTodo } from '../class/block-todo';
+import { UpdateNameTodo } from '../class/update-name-todo';
 
 @Component({
   selector: 'app-switch',
@@ -11,7 +12,7 @@ export class SwitchComponent {
   @Input() first_element = true;
   @Input() last_element = true;
 
-  @Output() changeName = new EventEmitter<[number, string]>();
+  @Output() changeName = new EventEmitter<BlockTodo>();
   @Output() changeList = new EventEmitter<number>();
 
   edit = false;
@@ -21,7 +22,8 @@ export class SwitchComponent {
   }
 
   endEdit(event: any) {
-    this.changeName.emit([this.block_todo.id, event.target.value]);
+    this.block_todo.title = event.target.value;
+    this.changeName.emit(this.block_todo);
     this.edit = false;
   }
 

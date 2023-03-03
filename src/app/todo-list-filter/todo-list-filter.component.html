@@ -1,5 +1,5 @@
 <div class="down_bar">
-  <div class="info" *ngIf="number_items !== 0">
+  <div class="info">
     <p *ngIf="number_items - completed_items < 2">
       {{ number_items - completed_items }} item left
     </p>
@@ -7,21 +7,20 @@
       {{ number_items - completed_items }} items left
     </p>
   </div>
-  <mat-button-toggle-group
-    *ngIf="number_items !== 0"
-    name="fontStyle"
-    aria-label="Font Style"
-    value="All"
-  >
-    <mat-button-toggle value="All" (click)="changePrint(filter_mod.All)"
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle
+      (click)="changePrint(filter_mod.All)"
+      [checked]="active_filter_mod === filter_mod.All"
       >All</mat-button-toggle
     >
-    <mat-button-toggle value="Active" (click)="changePrint(filter_mod.Active)"
+    <mat-button-toggle
+      (click)="changePrint(filter_mod.Active)"
+      [checked]="active_filter_mod === filter_mod.Active"
       >Active</mat-button-toggle
     >
     <mat-button-toggle
-      value="Completed"
       (click)="changePrint(filter_mod.Completed)"
+      [checked]="active_filter_mod === filter_mod.Completed"
       >Completed</mat-button-toggle
     >
   </mat-button-toggle-group>

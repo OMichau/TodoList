@@ -8,6 +8,7 @@ import { FilterMod } from '../class/filter_mod';
 })
 export class TodoListFilterComponent {
   filter_mod = FilterMod;
+  @Input() active_filter_mod: FilterMod = FilterMod.All;
 
   @Input() number_items = 0;
   @Input() completed_items = 0;

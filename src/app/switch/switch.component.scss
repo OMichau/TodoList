@@ -16,13 +16,13 @@
 .left_arrow{
 	position: absolute;
 	top : 50px;
-	left: 300px;
+	left: 20%;
 }
 
 .right_arrow{
 	position: absolute;
 	top : 50px;	
-	right: 300px;
+	right: 20%;
 }
 
 .mat-icon{
@@ -76,6 +76,7 @@ button {
 
 .left_arrow--disabled, .right_arrow--disabled{
 	opacity: 0.2;
+	cursor: not-allowed;
 }
 
 

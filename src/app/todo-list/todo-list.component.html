@@ -17,8 +17,10 @@
   </div>
 
   <app-todo-list-filter
+    *ngIf="block_todo.todos_list.length !== 0"
     [completed_items]="number_completed_items"
     [number_items]="block_todo.todos_list.length"
+    [active_filter_mod]="block_todo.active_filter"
     (changeFilterMod)="changePrint($event)"
     (clearCompleted)="clearCompletedItems()"
   ></app-todo-list-filter>
