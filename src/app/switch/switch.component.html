@@ -14,6 +14,7 @@
     class="editing"
     *ngIf="edit"
     (keyup.enter)="endEdit($event)"
+    (blur)="endEdit($event)"
     value="{{ block_todo.title }}"
     autofocus
   />

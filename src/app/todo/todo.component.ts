@@ -37,4 +37,8 @@ export class TodoComponent {
       });
     }
   }
+
+  cancelEdit() {
+    this.edit = false;
+  }
 }

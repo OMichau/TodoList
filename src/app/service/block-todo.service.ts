@@ -59,7 +59,7 @@ export class BlockTodoService {
   }
 
   addTodoToList(todo: Todo) {
-    this.block_todo.todos_list.push(todo);
+    this.block_todo.todos_list.unshift(todo);
     this.current_block_todo.next(this.block_todo);
   }
 

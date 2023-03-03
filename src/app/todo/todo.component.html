@@ -3,20 +3,21 @@
     [checked]="todo.active"
     (change)="changeActive()"
   ></mat-checkbox>
-  <p
-    class="todo_value"
-    *ngIf="!edit"
-    (dblclick)="editTodo()"
-    [ngClass]="{
-      'todo_value--check': todo.active
-    }"
-  >
-    {{ todo.value }}
-  </p>
+  <div class="todo_value_div" *ngIf="!edit" (dblclick)="editTodo()">
+    <p
+      class="todo_value"
+      [ngClass]="{
+        'todo_value--check': todo.active
+      }"
+    >
+      {{ todo.value }}
+    </p>
+  </div>
   <input
     class="editing"
     *ngIf="edit"
     (keyup.enter)="endEdit($event)"
+    (keyup.escape)="cancelEdit()"
     value="{{ todo.value }}"
     autofocus
   />

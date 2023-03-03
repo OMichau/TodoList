@@ -25,12 +25,10 @@ export class BockTodoComponent {
 
   editTitle(event: BlockTodo) {
     this.block_todo_service.updateList(event);
-    this.updateVar();
   }
 
   changeList(index: number) {
     this.block_todo_service.changeList(index);
-    this.updateVar();
   }
 
   updateVar() {

@@ -4,7 +4,7 @@
 	top: 60px;
 	left: 0px;
 	width: 100%;
-	font-size: 100px;
+	font-size: 80px;
 	font-weight: bold;
 	text-align: center;
 	color: rgba(175, 47, 47, 0.15);
@@ -15,13 +15,13 @@
 
 .left_arrow{
 	position: absolute;
-	top : 50px;
+	top : 60px;
 	left: 20%;
 }
 
 .right_arrow{
 	position: absolute;
-	top : 50px;	
+	top : 60px;	
 	right: 20%;
 }
 
@@ -36,20 +36,22 @@
 	position: absolute;
 	margin: 0;
 	width: 550px;
-	font-size: 24px;
+	font-size: 70px;
 	font-family: inherit;
 	font-weight: inherit;
 	line-height: 1.4em;
 	border: 0;
 	color: inherit;
 	padding: 6px;
-	border: 1px solid #999;
+	border: none;
 	box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	padding: 16px 16px 16px 60px;
-	top:50px;
+	padding: 16px 16px 16px 16px;
+	top:10px;
+	height: 110px;
+	text-align: center;
 }
 
 button {
@@ -71,11 +73,12 @@ button {
 }
 
 .right_arrow_image, .left_arrow_image{
-	width: 50px;
+	width: 30px;
+	opacity: 0.6;
 }
 
 .left_arrow--disabled, .right_arrow--disabled{
-	opacity: 0.2;
+	opacity: 0.1;
 	cursor: not-allowed;
 }
 

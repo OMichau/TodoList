@@ -22,9 +22,11 @@ export class SwitchComponent {
   }
 
   endEdit(event: any) {
-    this.block_todo.title = event.target.value;
-    this.changeName.emit(this.block_todo);
-    this.edit = false;
+    if (event.target.value !== '') {
+      this.block_todo.title = event.target.value;
+      this.changeName.emit(this.block_todo);
+      this.edit = false;
+    }
   }
 
   switchList(index: number) {

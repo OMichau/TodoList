@@ -11,15 +11,17 @@ mat-button-toggle-group{
 .down_bar{
     display: flex;
     align-items: center;
+	border-top: 1px solid;
+	border-color: rgb(192, 192, 192);
 }
 
 .clear_all{
-    position: absolute;
-    left: 380px;
+    position: relative;
+    margin-left: 20px;
 }
 
 
-button {
+.clear_all_button {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -37,11 +39,12 @@ button {
     cursor: pointer;
 }
 
-button:hover{
+.clear_all_button:hover{
     text-decoration: underline;
 }
 
 .info {
+	width: 100px;
 	margin: 27px 10px 0;
 	color: #bfbfbf;
 	font-size: 15px;
@@ -51,4 +54,35 @@ button:hover{
 
 .info p {
 	line-height: 1;
+}
+
+.filter_button {
+  background: #EAD7D7;
+  border-radius: 999px;
+  box-shadow: #EAD7D7 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+  margin-left: 10px;
+}
+
+
+.filter_button--checked{
+	background: white;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 3px 6px -12px inset, rgba(0, 0, 0, 0.3) 0px 2px 4px -2px inset;
+	border-color: #000000;
+	color: black;
+	cursor: auto ;
 }
