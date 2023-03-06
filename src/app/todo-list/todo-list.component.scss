@@ -17,3 +17,37 @@
     width: 10px;
     border: none;
  }
+
+ .undo_redo{
+    position: absolute;
+    margin-right: 5px;
+    margin-top:10px;
+    right: 0px;
+ }
+
+ .undo, .redo{
+    margin-right:5px;
+	z-index: 5;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	font-family: inherit;
+	font-weight: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	cursor: pointer;
+ }
+
+ .undo_icon{
+    width: 25px;
+ }
+
+ .redo_icon{
+    width:25px;
+    transform: scaleX(-1);
+ }

@@ -11,11 +11,13 @@ import { BlockTodoService } from '../service/block-todo.service';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent {
-  block_todo = new BlockTodo(0);
+  block_todo: BlockTodo;
   number_completed_items = 0;
   filtered_list: Todo[] = [];
 
   constructor(private block_todo_service: BlockTodoService) {
+    this.block_todo = this.block_todo_service.block_todo;
+    this.filterList();
     this.block_todo_service.current_block_todo.subscribe((block_todo) => {
       this.block_todo = block_todo;
       this.filterList();
@@ -72,5 +74,9 @@ export class TodoListComponent {
         (todo.active && this.block_todo.active_filter === FilterMod.Completed)
       );
     });
+  }
+
+  undo() {
+    this.block_todo_service.undo();
   }
 }

@@ -1,10 +1,12 @@
 <div>
   <app-switch
     [block_todo]="actual_list"
-    (changeName)="editTitle($event)"
-    (changeList)="changeList($event)"
     [first_element]="current_index === 0"
     [last_element]="current_index === block_todo_length"
+    (changeName)="editTitle($event)"
+    (changeList)="changeList($event)"
+    (deleteList)="deleteList($event)"
+    (resetAll)="reset()"
   >
   </app-switch>
   <div class="global">

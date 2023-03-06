@@ -7,7 +7,7 @@ import { Todo } from '../class/todo';
   styleUrls: ['./add-bar.component.scss'],
 })
 export class AddBarComponent {
-  nextId = 0;
+  @Input() nextId = 0;
 
   @Input() nbItems = 0;
   @Input() completedItems = 0;
@@ -18,7 +18,6 @@ export class AddBarComponent {
   onKeyEnter(event: any) {
     if (event.target.value != '') {
       this.addToList.emit(new Todo(this.nextId, event.target.value));
-      this.nextId++;
       event.target.value = '';
     }
   }

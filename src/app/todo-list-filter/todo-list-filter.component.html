@@ -36,23 +36,6 @@
       Completed
     </button>
   </div>
-  <!-- <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-    <mat-button-toggle
-      (click)="changePrint(filter_mod.All)"
-      [checked]="active_filter_mod === filter_mod.All"
-      >All</mat-button-toggle
-    >
-    <mat-button-toggle
-      (click)="changePrint(filter_mod.Active)"
-      [checked]="active_filter_mod === filter_mod.Active"
-      >Active</mat-button-toggle
-    >
-    <mat-button-toggle
-      (click)="changePrint(filter_mod.Completed)"
-      [checked]="active_filter_mod === filter_mod.Completed"
-      >Completed</mat-button-toggle
-    >
-  </mat-button-toggle-group> -->
   <div class="clear_all" *ngIf="completed_items !== 0">
     <button class="clear_all_button" (click)="clearCompletedItems()">
       Clear Completed

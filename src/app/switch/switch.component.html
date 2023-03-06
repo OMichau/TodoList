@@ -1,4 +1,5 @@
 <div>
+  <!-- <button class="reset_button" (click)="reset()">Reset</button> -->
   <button
     class="left_arrow"
     [disabled]="first_element"
@@ -25,5 +26,12 @@
     [ngClass]="{ 'right_arrow--disabled': last_element }"
   >
     <img class="right_arrow_image" src="../../assets/right-arrow.png" />
+  </button>
+  <button
+    class="delete_button"
+    (click)="delete(block_todo.id)"
+    [ngClass]="{ 'delete_button--disabled': last_element }"
+  >
+    <img class="delete_icon" src="../../assets/dechets.png" />
   </button>
 </div>

@@ -2,6 +2,7 @@
   <app-add-bar
     class="add_bar"
     [nbItems]="block_todo.todos_list.length"
+    [nextId]="block_todo.next_id_todo"
     [completedItems]="number_completed_items"
     (addToList)="addToList($event)"
     (activeAll)="checkAll()"
@@ -24,4 +25,12 @@
     (changeFilterMod)="changePrint($event)"
     (clearCompleted)="clearCompletedItems()"
   ></app-todo-list-filter>
+  <div class="undo_redo">
+    <button class="undo" (click)="undo()">
+      <img class="undo_icon" src="../../assets/undo.png" />
+    </button>
+    <button class="redo">
+      <img class="redo_icon" src="../../assets/undo.png" />
+    </button>
+  </div>
 </div>
