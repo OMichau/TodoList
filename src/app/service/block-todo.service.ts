@@ -18,7 +18,8 @@ export class BlockTodoService {
   new_list = true;
   next_id_list = 1;
 
-  undo_list: BlockTodo[][] = [];
+  is_undo = false;
+  undo_list: BlockTodo[][];
   redo_list: BlockTodo[][] = [];
 
   constructor() {
@@ -47,34 +48,46 @@ export class BlockTodoService {
     } else {
       this.next_id_list = parseInt(next_id_string);
     }
+    const undo_list_string = localStorage.getItem('undo_list');
+    if (undo_list_string === null) {
+      console.log('vide');
+      this.undo_list = [];
+    } else {
+      this.undo_list = JSON.parse(undo_list_string) as BlockTodo[][];
+    }
     //-----------Subcribe-----------//
     this.current_block_todo.subscribe((block_todo) => {
-      if (this.new_list) {
+      if (this.new_list && !this.is_undo) {
         this.block_todo_list.push(block_todo);
         this.new_list = false;
         this.next_id_list++;
         localStorage.setItem('next_id_list', this.next_id_list.toString());
+      } else if (this.is_undo) {
+        this.is_undo = false;
       }
-      this.actual_completed_item.next(
-        block_todo.todos_list.filter((todo) => todo.active).length
-      );
+
       this.block_todo = block_todo;
       localStorage.setItem(
         this.block_string,
         JSON.stringify(this.block_todo_list)
       );
+
+      this.actual_completed_item.next(
+        block_todo.todos_list.filter((todo) => todo.active).length
+      );
     });
   }
 
   updateList(event: BlockTodo) {
-    this.current_block_todo.next(event);
+    this.updateUndoList();
     if (!this.new_list) {
       this.block_todo_list.map((todo_list) => {
         if (todo_list.id === event.id) {
-          todo_list = event;
+          todo_list.title = event.title;
         }
       });
     }
+    this.current_block_todo.next(event);
   }
 
   changeList(index: number) {
@@ -94,12 +107,14 @@ export class BlockTodoService {
   }
 
   addTodoToList(todo: Todo) {
+    this.updateUndoList();
     this.block_todo.todos_list.unshift(todo);
     this.block_todo.next_id_todo++;
     this.current_block_todo.next(this.block_todo);
   }
 
   checkAllCurrentItems() {
+    this.updateUndoList();
     let bool = true;
     this.block_todo.todos_list.map((todo) => {
       bool = bool && todo.active;
@@ -111,6 +126,7 @@ export class BlockTodoService {
   }
 
   clearItem(id: number) {
+    this.updateUndoList();
     this.block_todo.todos_list = this.block_todo.todos_list.filter(
       (todo) => todo.id !== id
     );
@@ -118,6 +134,7 @@ export class BlockTodoService {
   }
 
   activeItem(id: number) {
+    this.updateUndoList();
     this.block_todo.todos_list.map((todo) => {
       if (todo.id == id) {
         todo.active = !todo.active;
@@ -127,6 +144,7 @@ export class BlockTodoService {
   }
 
   clearCompletedItems() {
+    this.updateUndoList();
     this.block_todo.todos_list = this.block_todo.todos_list.filter(
       (todo) => !todo.active
     );
@@ -134,6 +152,7 @@ export class BlockTodoService {
   }
 
   changeNameItem(obj: UpdateNameTodo) {
+    this.updateUndoList();
     this.block_todo.todos_list.map((todo) => {
       if (todo.id === obj.todo_id) {
         todo.value = obj.new_name;
@@ -148,6 +167,7 @@ export class BlockTodoService {
   }
 
   deleteList(id: number) {
+    this.updateUndoList();
     this.block_todo_list = this.block_todo_list.filter(
       (block_todo) => block_todo.id !== id
     );
@@ -165,12 +185,24 @@ export class BlockTodoService {
     }
   }
 
+  updateUndoList() {
+    this.undo_list.push(JSON.parse(JSON.stringify(this.block_todo_list)));
+    localStorage.setItem('undo_list', JSON.stringify(this.undo_list));
+  }
+
   undo() {
     const temp = this.undo_list.pop();
-    console.log(temp);
     if (temp) {
-      this.block_todo_list = temp;
-      this.block_todo = this.block_todo_list[this.current_index];
+      this.is_undo = true;
+      if (temp.length !== 0) {
+        this.block_todo_list = temp;
+        this.block_todo = this.block_todo_list[this.current_index];
+      } else {
+        this.block_todo_list = [];
+        this.block_todo = new BlockTodo(this.next_id_list);
+        this.next_id_list++;
+        this.new_list = true;
+      }
       this.current_block_todo.next(this.block_todo);
     }
   }

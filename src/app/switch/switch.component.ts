@@ -24,8 +24,14 @@ export class SwitchComponent {
 
   endEdit(event: any) {
     if (event.target.value !== '') {
-      this.block_todo.title = event.target.value;
-      this.changeName.emit(this.block_todo);
+      const temp: BlockTodo = {
+        title: event.target.value,
+        active_filter: this.block_todo.active_filter,
+        id: this.block_todo.id,
+        next_id_todo: this.block_todo.next_id_todo,
+        todos_list: this.block_todo.todos_list,
+      };
+      this.changeName.emit(temp);
       this.edit = false;
     }
   }
