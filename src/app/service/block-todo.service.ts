@@ -18,7 +18,7 @@ export class BlockTodoService {
   new_list = true;
   next_id_list = 1;
 
-  is_undo = false;
+  is_undo_redo = false;
   undo_list: BlockTodo[][];
   redo_list: BlockTodo[][] = [];
 
@@ -55,15 +55,22 @@ export class BlockTodoService {
     } else {
       this.undo_list = JSON.parse(undo_list_string) as BlockTodo[][];
     }
+    const redo_list_string = localStorage.getItem('redo_list');
+    if (redo_list_string === null) {
+      console.log('vide');
+      this.redo_list = [];
+    } else {
+      this.redo_list = JSON.parse(redo_list_string) as BlockTodo[][];
+    }
     //-----------Subcribe-----------//
     this.current_block_todo.subscribe((block_todo) => {
-      if (this.new_list && !this.is_undo) {
+      if (this.new_list && !this.is_undo_redo) {
         this.block_todo_list.push(block_todo);
         this.new_list = false;
         this.next_id_list++;
         localStorage.setItem('next_id_list', this.next_id_list.toString());
-      } else if (this.is_undo) {
-        this.is_undo = false;
+      } else if (this.is_undo_redo) {
+        this.is_undo_redo = false;
       }
 
       this.block_todo = block_todo;
@@ -188,12 +195,14 @@ export class BlockTodoService {
   updateUndoList() {
     this.undo_list.push(JSON.parse(JSON.stringify(this.block_todo_list)));
     localStorage.setItem('undo_list', JSON.stringify(this.undo_list));
+    this.updateRedoList();
   }
 
   undo() {
     const temp = this.undo_list.pop();
     if (temp) {
-      this.is_undo = true;
+      this.redo_list.push(this.block_todo_list);
+      this.is_undo_redo = true;
       if (temp.length !== 0) {
         this.block_todo_list = temp;
         this.block_todo = this.block_todo_list[this.current_index];
@@ -204,6 +213,32 @@ export class BlockTodoService {
         this.new_list = true;
       }
       this.current_block_todo.next(this.block_todo);
+      localStorage.setItem('redo_list', JSON.stringify(this.redo_list));
+      localStorage.setItem('undo_list', JSON.stringify(this.undo_list));
+    }
+  }
+
+  updateRedoList() {
+    this.redo_list = [];
+  }
+
+  redo() {
+    const temp = this.redo_list.pop();
+    if (temp) {
+      this.is_undo_redo = true;
+      this.undo_list.push(this.block_todo_list);
+      if (temp.length !== 0) {
+        this.block_todo_list = temp;
+        this.block_todo = this.block_todo_list[this.current_index];
+      } else {
+        this.block_todo_list = [];
+        this.block_todo = new BlockTodo(this.next_id_list);
+        this.next_id_list++;
+        this.new_list = true;
+      }
+      this.current_block_todo.next(this.block_todo);
+      localStorage.setItem('redo_list', JSON.stringify(this.redo_list));
+      localStorage.setItem('undo_list', JSON.stringify(this.undo_list));
     }
   }
 

@@ -79,4 +79,8 @@ export class TodoListComponent {
   undo() {
     this.block_todo_service.undo();
   }
+
+  redo() {
+    this.block_todo_service.redo();
+  }
 }
