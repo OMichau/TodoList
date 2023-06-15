@@ -29,13 +29,14 @@ export class TodoComponent {
   }
 
   endEdit(event: any) {
-    if (event.target.value != '') {
-      this.edit = false;
-      this.changeName.emit({
-        todo_id: this.todo.id,
-        new_name: event.target.value,
-      });
-    }
+    // if (event.target.value != '') {
+    //   this.edit = false;
+    //   this.changeName.emit({
+    //     todo_id: this.todo.id,
+    //     new_name: event.target.value,
+    //   });
+    // }
+    this.clear();
   }
 
   cancelEdit() {

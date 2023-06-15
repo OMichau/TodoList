@@ -133,11 +133,11 @@ export class BlockTodoService {
   }
 
   clearItem(id: number) {
-    //this.updateUndoList();
-    //this.block_todo.todos_list = this.block_todo.todos_list.filter(
-    //   (todo) => todo.id !== id
-    //);
-    //this.current_block_todo.next(this.block_todo);
+    this.updateUndoList();
+    this.block_todo.todos_list = this.block_todo.todos_list.filter(
+      (todo) => todo.id !== id
+    );
+    this.current_block_todo.next(this.block_todo);
   }
 
   activeItem(id: number) {
