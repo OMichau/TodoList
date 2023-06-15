@@ -114,10 +114,10 @@ export class BlockTodoService {
   }
 
   addTodoToList(todo: Todo) {
-    //this.updateUndoList();
-    //this.block_todo.todos_list.unshift(todo);
-    //this.block_todo.next_id_todo++;
-    //this.current_block_todo.next(this.block_todo);
+    this.updateUndoList();
+    this.block_todo.todos_list.unshift(todo);
+    this.block_todo.next_id_todo++;
+    this.current_block_todo.next(this.block_todo);
   }
 
   checkAllCurrentItems() {
