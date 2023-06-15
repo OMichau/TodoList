@@ -151,11 +151,14 @@ export class BlockTodoService {
   }
 
   clearCompletedItems() {
-    this.updateUndoList();
-    this.block_todo.todos_list = this.block_todo.todos_list.filter(
-      (todo) => !todo.active
-    );
-    this.current_block_todo.next(this.block_todo);
+    this.block_todo.todos_list.map((todo) => {
+      this.clearItem(todo.id);
+    });
+    // this.updateUndoList();
+    // this.block_todo.todos_list = this.block_todo.todos_list.filter(
+    //   (todo) => !todo.active
+    // );
+    // this.current_block_todo.next(this.block_todo);
   }
 
   changeNameItem(obj: UpdateNameTodo) {
