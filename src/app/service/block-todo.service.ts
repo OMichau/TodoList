@@ -152,9 +152,6 @@ export class BlockTodoService {
   }
 
   clearCompletedItems() {
-    this.block_todo.todos_list.map((todo) => {
-      this.clearItem(todo.id);
-    });
     this.updateUndoList();
     this.block_todo.todos_list = this.block_todo.todos_list.filter(
       (todo) => !todo.active
