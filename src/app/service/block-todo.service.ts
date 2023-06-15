@@ -212,7 +212,7 @@ export class BlockTodoService {
       } else {
         this.block_todo_list = [];
         this.block_todo = new BlockTodo(this.next_id_list);
-        //this.next_id_list++;
+        this.next_id_list++;
         this.new_list = true;
       }
       this.current_block_todo.next(this.block_todo);
