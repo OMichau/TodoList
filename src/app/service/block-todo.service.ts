@@ -154,11 +154,11 @@ export class BlockTodoService {
     this.block_todo.todos_list.map((todo) => {
       this.clearItem(todo.id);
     });
-    // this.updateUndoList();
-    // this.block_todo.todos_list = this.block_todo.todos_list.filter(
-    //   (todo) => !todo.active
-    // );
-    // this.current_block_todo.next(this.block_todo);
+    this.updateUndoList();
+    this.block_todo.todos_list = this.block_todo.todos_list.filter(
+      (todo) => !todo.active
+    );
+    this.current_block_todo.next(this.block_todo);
   }
 
   changeNameItem(obj: UpdateNameTodo) {
@@ -212,7 +212,7 @@ export class BlockTodoService {
       } else {
         this.block_todo_list = [];
         this.block_todo = new BlockTodo(this.next_id_list);
-        this.next_id_list++;
+        //this.next_id_list++;
         this.new_list = true;
       }
       this.current_block_todo.next(this.block_todo);
