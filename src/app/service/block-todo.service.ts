@@ -25,7 +25,7 @@ export class BlockTodoService {
   constructor() {
     //-----------Inititalisation-----------//
     // const block_list_string = localStorage.getItem(this.block_string);
-    const block_list_string = '';
+    const block_list_string = '[]';
     if (block_list_string === null) {
       this.block_todo_list = [];
       this.current_block_todo.next(new BlockTodo(0));
